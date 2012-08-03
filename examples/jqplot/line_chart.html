@@ -10,7 +10,7 @@
             Viskit.s.chart.jqplot.pluginsType("LineChart");
 
 
-            var dataProvider = new Viskit.p.ProviderGET("http://localhost/Viskit1/examples/generator2.php");
+            var dataProvider = new Viskit.p.ProviderGET("/Viskit1/examples/generator2.php");
             var dataFilter = new Viskit.f.BasicFilter(["services", "service"], ["@name"]);
 
             var timer = new Viskit.u.Timer(5000);

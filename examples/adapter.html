@@ -22,7 +22,7 @@
     <script type="text/javascript" src="../Viskit.js"></script>
     <script language="javascript" type="text/javascript">
 
-        var dataProvider = new Viskit.p.ProviderGET("http://localhost/Viskit/examples/generator2.php");
+        var dataProvider = new Viskit.p.ProviderGET("/Viskit/examples/generator2.php");
         var dataAdapter = new Viskit.a.Adapter();
         var wedgeChart = new Viskit.s.chart.protovis.WedgeChart("chart", "Request count per Service", "");
         var timer = new Viskit.u.Timer(5000);

@@ -35,7 +35,7 @@
         <script type="text/javascript" src="../js/dialog/DataFilterDialog.js"></script>
         
         <script language="javascript" type="text/javascript">
-            var dataProvider = new Viskit.DataProviderGET("http://localhost/Viskit/examples/generator2.php");
+            var dataProvider = new Viskit.DataProviderGET("/Viskit/examples/generator2.php");
             var dataFilter = new Viskit.BasicDataFilter(["services", "service"], "@name", ["findDNSServers", "dnsService", "myDarnService"]);
             var dataFilterDialog = new Viskit.DataFilterDialog(dataFilter.getID(), "dial");
             var index = 0;            

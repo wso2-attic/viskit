@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="../css/jqplot/jquery.jqplot.css"/>
     <script language="javascript" type="text/javascript">
 
-        var dataProvider = new Viskit.p.ProviderGET("http://localhost/Viskit/examples/generator2.php");
+        var dataProvider = new Viskit.p.ProviderGET("/Viskit/examples/generator2.php");
         var dataFilter = new Viskit.f.BasicFilter(["services", "service"], ["@name"], ["Service 04", "Service 03"]);
 
         Viskit.s.chart.jqplot.pluginsType("BarChart");

@@ -22,7 +22,7 @@
         <script type="text/javascript">
             var index = 0;
 			var timer = new Timer(3000);
-			var dataProvider = new DataProvider("http://localhost/Viskit/examples/generator2.php");
+			var dataProvider = new DataProvider("/Viskit/examples/generator2.php");
 			var dataFilter = new BasicDataFilter(["services", "service"], "@name", ["findDNSServers", "dnsService", "myDarnService"]);
 			var dataFilter2 = new BasicDataFilter(["services", "service"], "@name", ["findDNSServers", "dnsService", "myDarnService"]);		
 			var dataFilterDialog = new DataFilterDialog(dataFilter, "filter");
