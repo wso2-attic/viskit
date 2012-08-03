@@ -1,0 +1,48 @@
+<html>
+<head>
+    <script type="text/javascript" language="javascript" src="../../Viskit.js"></script>
+    <script type="text/javascript" language="javascript" src="../../lib/jqplot/jquery.jqplot.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../css/jqplot/jquery.jqplot.css"/>
+    <script language="javascript" type="text/javascript">
+
+        var dataProvider = new Viskit.p.ProviderGET("http://localhost/sample2/sample/generator2.php");
+        var dataFilter = new Viskit.f.BasicFilter(["services", "service"], ["@name"], ["Service 04", "Service 03"]);
+
+        Viskit.s.chart.jqplot.pluginsType("BarChart");
+        var timer = new Viskit.u.Timer(5000);
+
+        function globalTick() {
+            dataProvider.pullData();
+        }
+
+        window.onload = function () {
+            var chart = document.getElementById('chart1')
+            var barChart = new Viskit.s.chart.jqplot.BarChart(chart, "titleSpacing", "");
+
+            barChart.dataField(["services", "service"])
+                    .dataValue(["stats", "requestCount"])
+                    .dataLabel(["@name"])
+                    .width(600)
+                    .height(300)
+                    .showPointLabels(true)
+                    .barWidth(75)
+                    .barMargin(45)
+                    .titleTop("JQplot Bar Chart")
+                    .yTitle("RequestCount")
+
+            barChart.load();
+
+            dataProvider.addDataReceiver(dataFilter);
+            dataFilter.addDataReceiver(barChart);
+            dataProvider.initialize();
+
+            timer.tick = globalTick;
+            timer.startTimer();
+        }
+    </script>
+</head>
+<body>
+<div id="chart1" style="height:300px;width:600px;"></div>
+
+</body>
+</html>

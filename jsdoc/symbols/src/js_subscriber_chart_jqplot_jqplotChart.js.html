@@ -1,0 +1,83 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * @class jqplot.Chart
+<span class='line'>  3</span>  * @extends Chart
+<span class='line'>  4</span>  * @author pulasthi@wso2.com
+<span class='line'>  5</span>  **/</span><span class="WHIT">
+<span class='line'>  6</span> 
+<span class='line'>  7</span> </span><span class="COMM">/**
+<span class='line'>  8</span>  * the main class for jqplot charts all the other charts extends this
+<span class='line'>  9</span>  * @param canvas the div to which the chart will be plotted
+<span class='line'> 10</span>  * @param chartTitle the Title of the chart
+<span class='line'> 11</span>  * @param chartDesc
+<span class='line'> 12</span>   */</span><span class="WHIT">
+<span class='line'> 13</span> 
+<span class='line'> 14</span> </span><span class="NAME">Viskit.s.chart.jqplot.Chart</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">canvas</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">chartTitle</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">chartDesc</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 15</span> </span><span class="WHIT">    </span><span class="NAME">Viskit.s.chart.Chart.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">canvas</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">chartTitle</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">chartDesc</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 16</span> </span><span class="WHIT">    </span><span class="COMM">/* @private */</span><span class="WHIT">
+<span class='line'> 17</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">canvas</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="STRN">'string'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">canvas</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 18</span> </span><span class="WHIT">        </span><span class="NAME">this.divEl</span><span class="PUNC">(</span><span class="NAME">$</span><span class="PUNC">(</span><span class="NAME">canvas</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">attr</span><span class="PUNC">(</span><span class="STRN">'id'</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 19</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'> 20</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="WHIT">    </span><span class="NAME">this.dataField</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">dataValue</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">dataLabel</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 25</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">xTitle</span><span class="PUNC">(</span><span class="STRN">""</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 26</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">yTitle</span><span class="PUNC">(</span><span class="STRN">""</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">x2Title</span><span class="PUNC">(</span><span class="STRN">""</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">y2Title</span><span class="PUNC">(</span><span class="STRN">""</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">tickNumber</span><span class="PUNC">(</span><span class="NUMB">10</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">isStacked</span><span class="PUNC">(</span><span class="KEYW">false</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">yTicks</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">showXAxis</span><span class="PUNC">(</span><span class="KEYW">true</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">showYAxis</span><span class="PUNC">(</span><span class="KEYW">true</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">xAxisType</span><span class="PUNC">(</span><span class="STRN">'linear'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">yAxisType</span><span class="PUNC">(</span><span class="STRN">'linear'</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="WHIT">	</span><span class="PUNC">.</span><span class="NAME">titleTop</span><span class="PUNC">(</span><span class="NAME">chartTitle</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 37</span> 
+<span class='line'> 38</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 42</span> 
+<span class='line'> 43</span> </span><span class="COMM">// this makes c.protovis.BarChart.prototype inherits</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="COMM">// from Chart.prototype</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="NAME">Viskit.extend</span><span class="PUNC">(</span><span class="NAME">Viskit.s.chart.jqplot.Chart</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Viskit.s.chart.Chart</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 46</span> 
+<span class='line'> 47</span> </span><span class="NAME">Viskit.s.chart.jqplot.Chart.prototype</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"dataField"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"dataValue"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"dataLabel"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"titleTop"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"xTitle"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"yTitle"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"x2Title"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"y2Title"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"tickNumber"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"isStacked"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"yTicks"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"xTicks"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"xMin"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"yMin"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"x2Min"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"y2Min"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"xMax"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"yMax"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"x2Max"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"y2Max"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"showXAxis"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"showYAxis"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"showX2Axis"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"showY2Axis"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"xAxisType"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">    </span><span class="PUNC">.</span><span class="NAME">property</span><span class="PUNC">(</span><span class="STRN">"yAxisType"</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 75</span> 
+<span class='line'> 76</span> </span></pre></body></html>
