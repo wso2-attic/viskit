@@ -1,0 +1,472 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Viskit.js by wso2</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Viskit.js</h1>
+        <p class="header">The javascript charting library </p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/wso2/viskit/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/wso2/viskit/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/wso2/viskit">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/wso2">wso2</a></p>
+
+
+      </header>
+      <section>
+        <h2>Try out Viskit.js</h2>
+
+<p>Viskit.js is more than just a charting library. It solves the data filtering part as well for your visualizations. Viskit has inbuilt constructs such as data filters and providers so the chart creators can easily retrieve the required data from a data service.</p>
+
+<p>Viskit is open sourced and available under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache2.0</a> licence.</p>
+
+<h2>What's been used behind the scene</h2>
+
+<p>Viskit uses multiple charting libraries behind the scene and also provides an interface to plug your own charting toolkit. The libraries which are being used are</p>
+
+<ul>
+<li>Raphael - <a href="http://g.raphaeljs.com/">http://g.raphaeljs.com/</a>
+</li>
+<li>Protovis - <a href="http://mbostock.github.com/protovis/">http://mbostock.github.com/protovis/</a>
+</li>
+<li>JQPlot - <a href="http://www.jqplot.com/">http://www.jqplot.com/</a>
+</li>
+<li>InfoVis - <a href="http://thejit.org/">http://thejit.org/</a>
+</li>
+<li>Sencha Touch Charts - <a href="http://www.sencha.com/products/touch/charts">http://www.sencha.com/products/touch/charts</a>
+</li>
+</ul><p>We also like to thank all the geniuses who contributed to these projects.</p>
+
+<h2>Some notable features</h2>
+
+<ul>
+<li>Inherent support for XML data sets</li>
+<li>Concept of extensible DataProviders and DataFilters to plug new data sources and filter according to
+custom requirements</li>
+<li>Periodic data pull</li>
+<li>Local and session storage to persist temporal data</li>
+</ul><h2>Example charts</h2>
+
+<ul>
+<li><a href="http://nuwanbando.com/Viskit/examples/bar_chart.html">Bar Chart</a></li>
+<li><a href="http://nuwanbando.com/Viskit/examples/area_chart.html">Area Chart</a></li>
+<li><a href="http://nuwanbando.com/Viskit/examples/clusteredbar_chart.html">Clustered Bar Chart</a></li>
+<li><a href="http://nuwanbando.com/Viskit/examples/composite_chart.html">Composite Chart</a></li>
+<li><a href="http://nuwanbando.com/Viskit/examples/composite_chart.html">Pie Chart</a></li>
+<li><a href="http://nuwanbando.com/Viskit/examples/date_range.html">Date Range</a></li>
+<li><a href="http://nuwanbando.com/Viskit/examples/wedge_chart.html">Wedge Chart</a></li>
+<li><a href="http://nuwanbando.com/Viskit/examples/funnel_chart.html">Funnel Chart</a></li>
+<li><a href="http://nuwanbando.com/Viskit/examples/line_chart.html">Line Chart</a></li>
+<li><a href="http://nuwanbando.com/Viskit/examples/analytics.html">Analytic</a></li>
+<li><a href="http://nuwanbando.com/Viskit/examples/singleProvider.html">Single Data Provider</a></li>
+<li><a href="http://www.nuwanbando.com/Viskit">And more</a></li>
+</ul><h2>Working with charts - use-cases of Viskit</h2>
+
+<p>Viskit supports both jqPlot and Protovis and provides a common interface to the user hiding the complexities and the differences between various charting libraries. The following section explains step by step on how charts can be developed using Viskit via either JQPlot or Protovis.</p>
+
+<h3>Including required files</h3>
+
+<p>Viskit requires users to include a few scripts and CSS files into their html source. You need to have following scripts included </p>
+
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">language=</span><span class="s">"javascript"</span> <span class="na">src=</span><span class="s">"/Viskit/js/Viskit.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+<p><em>jqPlot Note: To work with jqPlot the following two lines should also be added</em></p>
+
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">language=</span><span class="s">"javascript"</span> <span class="na">src=</span><span class="s">"/Viskit/js/jquery.jqplot.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"/Viskit/css/jqplot/jquery.jqplot.css"</span> <span class="nt">/&gt;</span>
+</pre></div>
+
+<h3>Creating the chart</h3>
+
+<p>Creating a chart is done by calling a constructor of the chart type required and passing the necessary values used by the chart.</p>
+
+<div class="highlight"><pre><span class="nx">wso2vis</span><span class="p">.</span><span class="nx">s</span><span class="p">.</span><span class="nx">chart</span><span class="p">.</span><span class="nx">jqplot</span><span class="p">.</span><span class="nx">pluginsType</span><span class="p">(</span><span class="s2">"BarChart"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">chart</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'chart1'</span><span class="p">)</span>    
+<span class="kd">var</span> <span class="nx">barChart</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Viskit</span><span class="p">.</span><span class="nx">s</span><span class="p">.</span><span class="nx">chart</span><span class="p">.</span><span class="nx">jqplot</span><span class="p">.</span><span class="nx">BarChart</span><span class="p">(</span><span class="nx">chart</span><span class="p">,</span><span class="s2">"Title"</span><span class="p">,</span><span class="s2">""</span><span class="p">);</span>    
+
+<span class="nx">barChart</span><span class="p">.</span><span class="nx">dataField</span><span class="p">([</span><span class="s2">"services"</span><span class="p">,</span> <span class="s2">"service"</span><span class="p">])</span>    
+          <span class="p">.</span><span class="nx">dataValue</span><span class="p">([</span><span class="s2">"stats"</span><span class="p">,</span> <span class="s2">"requestCount"</span><span class="p">])</span>    
+          <span class="p">.</span><span class="nx">dataLabel</span><span class="p">([</span><span class="s2">"@name"</span><span class="p">])</span>    
+          <span class="p">.</span><span class="nx">width</span><span class="p">(</span><span class="mi">600</span><span class="p">)</span>    
+          <span class="p">.</span><span class="nx">height</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>    
+          <span class="p">.</span><span class="nx">showPointLabels</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>    
+          <span class="p">.</span><span class="nx">barWidth</span><span class="p">(</span><span class="mi">75</span><span class="p">)</span>    
+          <span class="p">.</span><span class="nx">barMargin</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>    
+          <span class="p">.</span><span class="nx">yTitle</span><span class="p">(</span><span class="s2">"RequestCount"</span><span class="p">)</span>    
+
+<span class="nx">barChart</span><span class="p">.</span><span class="nx">load</span><span class="p">();</span>    
+
+<span class="nx">dataProvider</span><span class="p">.</span><span class="nx">addDataReceiver</span><span class="p">(</span><span class="nx">dataFilter</span><span class="p">);</span>    
+<span class="nx">dataFilter</span><span class="p">.</span><span class="nx">addDataReceiver</span><span class="p">(</span><span class="nx">barChart</span><span class="p">);</span> 
+<span class="nx">dataProvider</span><span class="p">.</span><span class="nx">pullData</span><span class="p">();</span>   
+<span class="nx">dataProvider</span><span class="p">.</span><span class="nx">initialize</span><span class="p">();</span>    
+</pre></div>
+
+<p>If you are using JQPlot, its mandetory to include the "Barchart" plugin, which is done in the line No. 1
+The second line creates a DOM object from a div element with the id “chart1”. Then calls the jqplot.BarChart constructor passing the DOM object of the chart object, the title of the chart and description of the chart (in the example the description is left blank)</p>
+
+<p><em>Note: The chart id can also be set instead of the DOM object. The following code snippet also works</em></p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">barChart</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Viskit</span><span class="p">.</span><span class="nx">s</span><span class="p">.</span><span class="nx">chart</span><span class="p">.</span><span class="nx">jqplot</span><span class="p">.</span><span class="nx">BarChart</span><span class="p">(</span><span class="s2">"chart1"</span><span class="p">,</span><span class="s2">"Title"</span><span class="p">,</span><span class="s2">""</span><span class="p">);</span>
+</pre></div>
+
+<h4>Setting chart properties</h4>
+
+<p>Viskit provides the user the ability to change the chart properties in a simple manner. There is a set of properties that are common to all the charts irrespective of their type.</p>
+
+<p><em>Ex.  dataField,  width</em></p>
+
+<p>And there is another set of properties that are specific to each chart.</p>
+
+<p><em>Ex. barWdith barMargin ( these are specific to jqPlot bar charts).</em></p>
+
+<p>dataField, dataValue and dataLabel are the most important properties of the chart. Let us look at what they are used for.</p>
+
+<p><strong>dataField</strong></p>
+
+<p>Specifies which data element to use from the data set. For the sample we use the following XML data set</p>
+
+<div class="highlight"><pre><span class="nt">&lt;services&gt;</span>  
+   <span class="nt">&lt;service</span> <span class="na">name=</span><span class="s">"Service 03"</span><span class="nt">&gt;</span>  
+         <span class="nt">&lt;stats&gt;</span>  
+           <span class="nt">&lt;requestCount&gt;</span>34<span class="nt">&lt;/requestCount&gt;</span>  
+           <span class="nt">&lt;responseCount&gt;</span>18<span class="nt">&lt;/responseCount&gt;</span>  
+           <span class="nt">&lt;faultCount&gt;</span>16<span class="nt">&lt;/faultCount&gt;</span>  
+           <span class="nt">&lt;averageResponseTime&gt;</span>579<span class="nt">&lt;/averageResponseTime&gt;</span>  
+           <span class="nt">&lt;maximumResponseTime&gt;</span>624<span class="nt">&lt;/maximumResponseTime&gt;</span>  
+           <span class="nt">&lt;minimumResponseTime&gt;</span>383<span class="nt">&lt;/minimumResponseTime&gt;</span>  
+         <span class="nt">&lt;/stats&gt;</span>  
+
+         <span class="nt">&lt;operations&gt;</span>  
+          …………….  
+         <span class="nt">&lt;/operations&gt;</span>  
+   <span class="nt">&lt;/service&gt;</span>          
+
+   <span class="nt">&lt;service</span> <span class="na">name=</span><span class="s">"Service 04"</span><span class="nt">&gt;</span>  
+         <span class="nt">&lt;stats&gt;</span>  
+           <span class="nt">&lt;requestCount&gt;</span>44<span class="nt">&lt;/requestCount&gt;</span>  
+           <span class="nt">&lt;responseCount&gt;</span>18<span class="nt">&lt;/responseCount&gt;</span>  
+           <span class="nt">&lt;faultCount&gt;</span>26<span class="nt">&lt;/faultCount&gt;</span>  
+           <span class="nt">&lt;averageResponseTime&gt;</span>635<span class="nt">&lt;/averageResponseTime&gt;</span>  
+           <span class="nt">&lt;maximumResponseTime&gt;</span>685<span class="nt">&lt;/maximumResponseTime&gt;</span>  
+           <span class="nt">&lt;minimumResponseTime&gt;</span>631<span class="nt">&lt;/minimumResponseTime&gt;</span>  
+         <span class="nt">&lt;/stats&gt;</span>  
+
+         <span class="nt">&lt;operations&gt;</span>  
+          …………………….  
+         <span class="nt">&lt;/operations&gt;</span>  
+   <span class="nt">&lt;/service&gt;</span>
+<span class="nt">&lt;services&gt;</span>          
+</pre></div>
+
+<p>service field is taken from, the above dataset and provided to the chart as following</p>
+
+<div class="highlight"><pre><span class="nx">barChart</span><span class="p">.</span><span class="nx">dataField</span><span class="p">([</span><span class="s2">"services"</span><span class="p">,</span> <span class="s2">"service"</span><span class="p">])</span>  
+</pre></div>
+
+<p><strong>dataValue</strong></p>
+
+<p>Specifies the actual value to be used to draw the chart from the specified in the dataField. </p>
+
+<div class="highlight"><pre><span class="nx">barChart</span><span class="p">.</span><span class="nx">dataValue</span><span class="p">([</span><span class="s2">"stats"</span><span class="p">,</span> <span class="s2">"requestCount"</span><span class="p">])</span>
+</pre></div>
+
+<p><strong>dataLabel</strong></p>
+
+<p>Specifies the value to be used as the data label in barchart. In jqplot bar charts this is used to name the x-axis of the chart. </p>
+
+<div class="highlight"><pre> <span class="nx">barChart</span><span class="p">.</span><span class="nx">dataLabel</span><span class="p">([</span><span class="s2">"@name"</span><span class="p">])</span>
+</pre></div>
+
+<p>After specifiying these three properties and the other optional properties all that needs to be done is to call the <code>load()</code> function and add the chart object to a data provider. In this example a data filter is used so the chart object will not be added directy to the data provider instead it will be added to the data filter.</p>
+
+<div class="highlight"><pre> <span class="nx">barChart</span><span class="p">.</span><span class="nx">load</span><span class="p">();</span>  
+ <span class="nx">dataProvider</span><span class="p">.</span><span class="nx">addDataReceiver</span><span class="p">(</span><span class="nx">dataFilter</span><span class="p">);</span>  
+ <span class="nx">dataFilter</span><span class="p">.</span><span class="nx">addDataReceiver</span><span class="p">(</span><span class="nx">barChart</span><span class="p">);</span>
+</pre></div>
+
+<p>The “load” function will initialize the chart and set the necessary parameters to draw the chart.</p>
+
+<p><strong>onTooltip</strong></p>
+
+<p>Allows the user to specify and tooltip for the chart the function would be as follows</p>
+
+<div class="highlight"><pre><span class="nx">barChart</span><span class="p">.</span><span class="nx">onTooltip</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">barTooltip</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>  
+      <span class="k">return</span> <span class="nx">data</span><span class="p">[</span><span class="s2">"@name"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">" - Requests: "</span><span class="o">+</span> <span class="nx">data</span><span class="p">[</span><span class="s2">"stats"</span><span class="p">][</span><span class="s2">"requestCount"</span><span class="p">];</span>  
+<span class="p">}</span>
+</pre></div>
+
+<p><strong>onClick</strong></p>
+
+<p>Allows the user to specify a message to be displayed if an element is clicked</p>
+
+<div class="highlight"><pre> <span class="nx">barChart</span><span class="p">.</span><span class="nx">onClick</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">barClick</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>  
+      <span class="nx">alert</span><span class="p">(</span><span class="s2">"Clicked: "</span> <span class="o">+</span> <span class="nx">data</span><span class="p">[</span><span class="s2">"@name"</span><span class="p">]);</span>  
+ <span class="p">}</span>
+</pre></div>
+
+<h3>Data providers</h3>
+
+<p>Providers perform the task of provisioning data (Currently the basic providers are written to take XML like data sets). Viskit gives the user three variants of data providers ProviderGET, ProviderGETJSON, ProviderGETMakeRequest </p>
+
+<p><code>ProviderGET()</code>
+Takes a data service URL that returns the data in a XML format.</p>
+
+<p><code>ProviderGETJSON()</code>
+Takes data service URL that returns  the data in JSON format. </p>
+
+<p><code>ProviderGETMakeRequest()</code>
+Normal AJAX requests cannot be made from within open social gadgets because of the cross domain restrains. This provider uses gadgets.io.makeRequest to retrieve data. This takes a data service URL that returns data in XML format </p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">dataProvider</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Viskit</span><span class="p">.</span><span class="nx">p</span><span class="p">.</span><span class="nx">ProviderGET</span><span class="p">(</span><span class="s2">"http://localhost/Viskit/examples/generator2.php"</span><span class="p">);</span> 
+</pre></div>
+
+<p>This line creates a data provider that receives data from the given URL. The next step is to add data receivers to the created data provider. Data providers keep an array of data receivers that it pushes data into when the data provider receives new data. New data receivers can be added to the list as follows. </p>
+
+<div class="highlight"><pre><span class="nx">dataProvider</span><span class="p">.</span><span class="nx">addDataReceiver</span><span class="p">(</span><span class="nx">theReceiver</span><span class="p">);</span>
+</pre></div>
+
+<p>This will add “theReceiver” object into the data provider’s receiver list. “theReceiver” can be a data filter or a chart object. Then to actually make the data provider pull data from the data source the following line should be included in your code. This call will retrieve data from the data source and push them into all the data receivers registered to that data provider.</p>
+
+<div class="highlight"><pre><span class="nx">dataProvider</span><span class="p">.</span><span class="nx">initialize</span><span class="p">();</span>  
+<span class="nx">dataProvider</span><span class="p">.</span><span class="nx">pullData</span><span class="p">();</span>
+</pre></div>
+
+<p><code>dataProvider.initialize()</code> is called to run any initialization of some logic if needed. </p>
+
+<h3>Data filters</h3>
+
+<p>Data filters are used to filter out only the necessary data that is needed for the charts. Filters can be easily added to data providers to filter the data</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">dataFilter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Viskit</span><span class="p">.</span><span class="nx">f</span><span class="p">.</span><span class="nx">BasicFilter</span><span class="p">([</span><span class="s2">"services"</span><span class="p">,</span> <span class="s2">"service"</span><span class="p">],</span> <span class="p">[</span><span class="s2">"@name"</span><span class="p">],[</span><span class="s2">"Service 04"</span><span class="p">,</span><span class="err">”</span><span class="nx">Service</span> <span class="mi">03</span><span class="err">”</span><span class="p">]);</span>
+</pre></div>
+
+<p>The above line declares a Basic filter which takes three parameters  dataField, dataLabel, filterArray</p>
+
+<p><strong>dataField</strong> 
+Specifies which data element to use from the data set</p>
+
+<p><strong>dataLabel</strong>
+The label that will be used to filter the data</p>
+
+<p><strong>filterArray</strong>
+The values that the data label should be filtered against</p>
+
+<h3>Setting a Timer</h3>
+
+<p>When working with data that change over time it is important to update after a specific time interval. Viskit provides a timing mechanism that can address this issue. You can set a timer to a time interval of your choice and set the data provider to pull new data from the data source when a tick is made in the timer. the timer can be used in any way the user wants it is not limited to data providers. Let’s look at the code that is related to timers.</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">timer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Viskit</span><span class="p">.</span><span class="nx">u</span><span class="p">.</span><span class="nx">Timer</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>  
+<span class="nx">timer</span><span class="p">.</span><span class="nx">tick</span> <span class="o">=</span> <span class="nx">dataProvider</span><span class="p">.</span><span class="nx">pullData</span><span class="p">();</span>  
+<span class="nx">timer</span><span class="p">.</span><span class="nx">startTimer</span><span class="p">();</span>
+</pre></div>
+
+<p>The above code snippet creates a timer that ticks every 5 seconds. In this code snippet the tick is set to call <code>dataProvider.pullData()</code></p>
+
+<h3>Using local Storage</h3>
+
+<p>One of the features provided by Viskit is the local and session storage support. This feature is currently available in jpPlot charts. Local storage is important when charting the variation of a property against time. Local storage will allow you to keep the values of that property for longer periods of time even if the browser is closed or the device is shutdown. Uses can activate local or session storage by simply specifying two extra properties for jpPlot charts. Users can either enable local storage or session storage and the user can specify the time interval (in milliseconds) that the users want to keep the data in the storage. Only data that are newer than the specified time will be kept in the storage.</p>
+
+<div class="highlight"><pre><span class="nx">barChart</span> <span class="p">.</span><span class="nx">enableLocalStorage</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>  
+<span class="nx">barChart</span><span class="p">.</span> <span class="nx">storageTime</span><span class="p">(</span><span class="mi">1000</span><span class="o">*</span><span class="mi">5</span><span class="p">);</span>
+</pre></div>
+
+<h2>Writing your own visualization for Viskit</h2>
+
+<p>Sometimes the existing visualization   implementation may not be sufficient to your needs or may lack one or two features that you need. Let’s say you need a new type of chart that is not currently implemented in the current visualization libraries then it is possible to implement your own chat or any other form of visualization that you require. This guide will show how a new visualization can be added in to Viskit using <a href="http://raphaeljs.com/">Raphael</a>.</p>
+
+<p>Raphael is a highly customizable charting library that can be used to create any type of visualization using vector graphics. We will try to create a simple bar chart implementation for Viskit using Raphael for this guide.</p>
+
+<h3>Understanding Viskit charts</h3>
+
+<p>Before we start to write our own chart let's take a look at the structure of Viskit charts. Each and every chart extends from <a href="https://github.com/wso2/viskit/blob/master/js/subscriber/chart/Chart.js">Viskit.Chart</a> class that defines the main functions and parameters of a chart. Any chart implementation overrides the necessary function from the functions that are defined in Viskit.Chart.</p>
+
+<h3>Your own bar chart with Raphaël</h3>
+
+<p>Let’s start to create our Raphael bar chart implementation. We will create a simple bar chart to understand how to create your own chart implementation. To understand this guide having a general idea about Raphael will be helpful. You can take a look at the Raphael documentation <a href="http://raphaeljs.com/reference.html">here</a></p>
+
+<h4>Creating the constructor</h4>
+
+<p>We will first write a constructor for the chart that is similar to the constructor in Viskit.Chart. the constructor will be named "Viskit.s.chart.raphael.BarChart" according to the naming standards of Viskit. The constructor will call the super class constructor,  set default values to properties that are defined for this chart ( Since we did not define what the properties are we will add this later) and define any variables that will be needed by the chart implementation.</p>
+
+<div class="highlight"><pre><span class="nx">Viskit</span><span class="p">.</span><span class="nx">s</span><span class="p">.</span><span class="nx">chart</span><span class="p">.</span><span class="nx">raphael</span><span class="p">.</span><span class="nx">BarChart</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">canvas</span><span class="p">,</span> <span class="nx">chartTitle</span><span class="p">,</span> <span class="nx">chartDesc</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">Viskit</span><span class="p">.</span><span class="nx">s</span><span class="p">.</span><span class="nx">chart</span><span class="p">.</span><span class="nx">Chart</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">,</span> <span class="nx">chartTitle</span><span class="p">,</span> <span class="nx">chartDesc</span><span class="p">);</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">colscheme</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>      
+    <span class="k">this</span><span class="p">.</span><span class="nx">chart</span> <span class="o">=</span> <span class="kc">null</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">formattedDataArray</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="p">}</span>
+</pre></div>
+
+<h4>Extending Viskit.Chart</h4>
+
+<p>The following code line should be added to the code to say that this chart extends from Viskit.Chart.</p>
+
+<div class="highlight"><pre><span class="nx">Viskit</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">Viskit</span><span class="p">.</span><span class="nx">s</span><span class="p">.</span><span class="nx">chart</span><span class="p">.</span><span class="nx">raphael</span><span class="p">.</span><span class="nx">BarChart</span><span class="p">,</span> <span class="nx">Viskit</span><span class="p">.</span><span class="nx">s</span><span class="p">.</span><span class="nx">chart</span><span class="p">.</span><span class="nx">Chart</span><span class="p">);</span>
+</pre></div>
+
+<h4>Defining chart properties</h4>
+
+<p>Now we will define all the chart properties that we need for our bar chart implementation. We will only need a small number of properties because we are creating a rather simple bar chart. Any number of properties can be defined as needed.</p>
+
+<div class="highlight"><pre><span class="nx">Viskit</span><span class="p">.</span><span class="nx">s</span><span class="p">.</span><span class="nx">chart</span><span class="p">.</span><span class="nx">raphael</span><span class="p">.</span><span class="nx">BarChart</span><span class="p">.</span><span class="nx">prototype</span>
+    <span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">"dataField"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">"dataValue"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">"dataLabel"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">"barWidth"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">"barPadding"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">"fontFamily"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">"fontSize"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">"raphaelPaper"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">property</span><span class="p">(</span><span class="s2">"marginSize"</span><span class="p">);</span>
+</pre></div>
+
+<p>Now we shall add the lines to set defaults to the defined properties.  </p>
+
+<p><em>Note: dataField, dataValue and dataLabel are not assigned with default values since these properties must be specified when creating a chart object.</em></p>
+
+<div class="highlight"><pre><span class="nx">Viskit</span><span class="p">.</span><span class="nx">s</span><span class="p">.</span><span class="nx">chart</span><span class="p">.</span><span class="nx">raphael</span><span class="p">.</span><span class="nx">BarChart</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">canvas</span><span class="p">,</span> <span class="nx">chartTitle</span><span class="p">,</span> <span class="nx">chartDesc</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">Viskit</span><span class="p">.</span><span class="nx">s</span><span class="p">.</span><span class="nx">chart</span><span class="p">.</span><span class="nx">Chart</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">,</span> <span class="nx">chartTitle</span><span class="p">,</span> <span class="nx">chartDesc</span><span class="p">);</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">colscheme</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">width</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">height</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">barWidth</span><span class="p">(</span><span class="mi">55</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">barPadding</span><span class="p">(</span><span class="mi">35</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">fontFamily</span><span class="p">(</span><span class="s1">'Fontin-Sans, Arial'</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">fontSize</span><span class="p">(</span><span class="s1">'10px'</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">raphaelPaper</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">marginSize</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">chart</span> <span class="o">=</span> <span class="kc">null</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">formattedDataArray</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="p">}</span>
+</pre></div>
+
+<h4>Creating a data converter (the important point)</h4>
+
+<p>Now we will write a function to convert the received data into a form that we can use easily. We shall name this method "convertData". this method will convert the data into an array of JSON objects with two properties “label” and “value”.</p>
+
+<p><strong>label</strong>
+This will be used to label each bar of the chart. "label"” will keep the values specified by the "dataLabel" property.</p>
+
+<p><strong>value</strong>
+This property will be used to draw the chart this will specify the height of the chart. This will keep the value specified by the “dataValue” property.</p>
+
+<p>The code for the data converter will be as follows.</p>
+
+<div class="highlight"><pre><span class="nx">wso2vis</span><span class="p">.</span><span class="nx">s</span><span class="p">.</span><span class="nx">chart</span><span class="p">.</span><span class="nx">raphael</span><span class="p">.</span><span class="nx">BarChart</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">convertData</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">that</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">df</span> <span class="o">=</span> <span class="nx">that</span><span class="p">.</span><span class="nx">traverseToDataField</span><span class="p">(</span><span class="nx">that</span><span class="p">.</span><span class="nx">data</span><span class="p">,</span> <span class="nx">that</span><span class="p">.</span><span class="nx">dataField</span><span class="p">());</span>    
+    <span class="kd">var</span> <span class="nx">dcount</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">df</span> <span class="k">instanceof</span> <span class="nb">Array</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">dcount</span> <span class="o">=</span> <span class="nx">df</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="nx">that</span><span class="p">.</span><span class="nx">formattedData</span> <span class="o">=</span> <span class="p">[];</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">dcount</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">that</span><span class="p">.</span><span class="nx">formattedData</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+            <span class="s2">"label"</span><span class="o">:</span><span class="nx">getLbl</span><span class="p">(</span><span class="nx">i</span><span class="p">),</span>
+            <span class="s2">"value"</span><span class="o">:</span><span class="nx">getVal</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+            <span class="p">});</span>
+        <span class="nx">that</span><span class="p">.</span><span class="nx">formattedDataArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">getVal</span><span class="p">(</span><span class="nx">i</span><span class="p">));</span>
+    <span class="p">};</span>
+
+    <span class="kd">function</span> <span class="nx">getVal</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">r</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">df</span> <span class="k">instanceof</span> <span class="nb">Array</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">r</span> <span class="o">=</span> <span class="nx">df</span><span class="p">[</span><span class="nx">x</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">r</span> <span class="o">=</span> <span class="nx">df</span><span class="p">;</span>
+        <span class="p">}</span>        
+        <span class="k">return</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">that</span><span class="p">.</span><span class="nx">traverseToDataField</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="nx">that</span><span class="p">.</span><span class="nx">dataValue</span><span class="p">()));</span>
+    <span class="p">};</span>
+
+    <span class="kd">function</span> <span class="nx">getLbl</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">r</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">df</span> <span class="k">instanceof</span> <span class="nb">Array</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">r</span> <span class="o">=</span> <span class="nx">df</span><span class="p">[</span><span class="nx">x</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">r</span> <span class="o">=</span> <span class="nx">df</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">that</span><span class="p">.</span><span class="nx">traverseToDataField</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="nx">that</span><span class="p">.</span><span class="nx">dataLabel</span><span class="p">());</span>
+    <span class="p">};</span>
+<span class="p">};</span>
+</pre></div>
+
+<h4>The “load” function</h4>
+
+<p>This is the function that is called to actually create the chart. Here we will simply call the "createBarChart" method</p>
+
+<div class="highlight"><pre><span class="nx">Viskit</span><span class="p">.</span><span class="nx">s</span><span class="p">.</span><span class="nx">chart</span><span class="p">.</span><span class="nx">raphael</span><span class="p">.</span><span class="nx">BarChart</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">load</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">raphaelPaper</span><span class="p">()</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">createBarChart</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<h4>The “update” function</h4>
+
+<p>This is the only method we will be overriding for this example as explained earlier we will write the code to draw when data is changed in this method</p>
+
+<div class="highlight"><pre><span class="nx">Viskit</span><span class="p">.</span><span class="nx">s</span><span class="p">.</span><span class="nx">chart</span><span class="p">.</span><span class="nx">raphael</span><span class="p">.</span><span class="nx">BarChart</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">update</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">formattedDataArray</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">convertData</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+
+    <span class="kd">var</span> <span class="nx">r</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">raphaelPaper</span><span class="p">();</span>
+    <span class="nx">r</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">ratio</span> <span class="o">=</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">height</span><span class="p">()</span><span class="o">-</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">height</span><span class="p">()</span><span class="o">/</span><span class="mi">10</span><span class="p">))</span><span class="o">/</span><span class="k">this</span><span class="p">.</span><span class="nx">formattedDataArray</span><span class="p">.</span><span class="nx">max</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">grid</span> <span class="o">=</span> <span class="nx">r</span><span class="p">.</span><span class="nx">drawGrid</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">marginSize</span><span class="p">(),</span><span class="mi">0</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">width</span><span class="p">(),</span> <span class="k">this</span><span class="p">.</span><span class="nx">height</span><span class="p">()</span><span class="o">-</span><span class="k">this</span><span class="p">.</span><span class="nx">marginSize</span><span class="p">(),</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">"#333"</span><span class="p">);</span>
+    <span class="nx">r</span><span class="p">.</span><span class="nx">setYAxis</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">marginSize</span><span class="p">(),</span>  <span class="k">this</span><span class="p">.</span><span class="nx">height</span><span class="p">()</span><span class="o">-</span><span class="k">this</span><span class="p">.</span><span class="nx">marginSize</span><span class="p">(),</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">formattedDataArray</span><span class="p">.</span><span class="nx">max</span><span class="p">(),</span> <span class="nx">r</span><span class="p">);</span>
+
+    <span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">formattedData</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="nx">r</span><span class="p">.</span><span class="nx">createBar</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">formattedData</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">value</span><span class="o">*</span><span class="nx">ratio</span><span class="p">,</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">formattedData</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">label</span><span class="p">,</span><span class="k">this</span><span class="p">,</span><span class="nx">r</span><span class="p">);</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>This method will call the custom Raphael functions that we defined to draw the chart. Before drawing the chart the canvas will be cleared to make sure the new chart is not sketched on top of any previous charts.</p>
+
+<p>A complete code which was written for a Raphael pie chart can be fount at the <a href="https://github.com/wso2/viskit/blob/master/js/subscriber/chart/raphael/PieChart.js">repository</a></p>
+
+<h3>Adding the new chart into Viskit</h3>
+
+<p>Now our bar chart is ready to be deployed into Viskit. To add a new implementation into Viskit you have to create a .js file that contains the code for the implementation place it in the appropriate place of the folder structure and do some minor changes into build files.</p>
+
+<p>We will place the BarChart.js file in Viskit\js\subscriber\chart\raphael</p>
+
+<p>You need to add this to the build script and build the library, so evrything will be packedup correctly. The build will also genarate you a Viskit.js minified version as well</p>
+
+<h3>Licence</h3>
+
+<p>Viskit is available under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache2.0</a> licence.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+		
+  </body>
+</html>
